@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <!-- https://pyscript.com/@examples/antigravity/latest -->
+    <!-- Recommended meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- PyScript CSS -->
+    <link rel="stylesheet" href="./base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- This script tag bootstraps PyScript -->
+    <script type="module" src="https://pyscript.net/releases/2024.11.1/core.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+    <script type="text/javascript">
+        async function main() {
+            let pyodide = await loadPyodide();
+            await pyodide.loadPackage("micropip");
+            const micropip = pyodide.pyimport("micropip");
+        }
+        main();
+    </script>
+    
+
+    <title>Desmos 8-Bit Computer</title>
+</head>
+
+<body>
+    
+    <nav class="navbar" style="background-color: #000000">
+        <div class="app-header">
+            <a class="title" href="" style="color: #f0ab3c">Desmos 8-Bit Computer/a>
+        </div>
+    </nav>
+    
+    <div class="text">
+      <h>1. Introduction</h>
+    </div>
+</body>
+</html>
