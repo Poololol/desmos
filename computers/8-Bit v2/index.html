@@ -1,30 +1,15 @@
 <!doctype html>
 
 <html>
-
 <head>
-    <!-- https://pyscript.com/@examples/antigravity/latest -->
     <!-- Recommended meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <!-- PyScript CSS -->
     <link rel="stylesheet" href="./base.css" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-    <!-- This script tag bootstraps PyScript -->
-    <script type="module" src="https://pyscript.net/releases/2024.11.1/core.js"></script>
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
-    <script type="text/javascript">
-        async function main() {
-            let pyodide = await loadPyodide();
-            await pyodide.loadPackage("micropip");
-            const micropip = pyodide.pyimport("micropip");
-        }
-        main();
-    </script>
-    
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <title>Desmos 8-Bit Computer</title>
 </head>
@@ -33,12 +18,93 @@
     
     <nav class="navbar" style="background-color: #000000">
         <div class="app-header">
-            <a class="title" href="" style="color: #f0ab3c">Desmos 8-Bit Computer</a>
+            <a class="title" style="color: #f0ab3c">Desmos 8-Bit Computer</a>
         </div>
     </nav>
     
     <div class="text">
-      <h>1. Introduction</h>
+        <h2>1. Introduction</h2>
+        <div class="subtext">
+            <h3>1.1 Overview</h3>
+            <p>
+                This is a project I've been working on for a while now. It's an 8-Bit Computer implemented in Desmos. 
+                It's based off of a design by <a href="https://www.youtube.com/@mattbatwings">Mattbatwings</a>, who implemented an <a href="https://www.youtube.com/playlist?list=PL5LiOvrbVo8nPTtdXAdSmDWzu85zzdgRT">8-Bit Computer in Minecraft</a>. 
+            </p>
+
+            <h3>1.2 Features</h3>
+
+            <h3>1.3 Initial Functions</h3>
+            <p>
+                I have implemented a few functions to convert numbers to different formats.
+                $$b_{inToDec}\left(b_{in}\right)=\sum_{n=0}^{\operatorname{floor}\left(\log\left(b_{in}\right)\right)}\left(2^{n}\operatorname{floor}\left(\operatorname{mod}\left(\frac{b_{in}}{10^{n}},10\right)\right)\right)$$
+                $$d_{ecToBin}\left(d_{ec}\right)=\sum_{n=0}^{\operatorname{floor}\left(\log_{2}\left(d_{ec}\right)\right)}10^{n}\operatorname{floor}\left(\operatorname{mod}\left(\frac{d_{ec}}{2^{n}},2\right)\right)$$
+                $$b_{inToList}\left(b_{in}\right)=\operatorname{floor}\left(\operatorname{mod}\left(\frac{b_{in}}{10^{n}},10\right)\right)\operatorname{for}n=\left[0...8\operatorname{floor}\left(\frac{\log\left(b_{in}+.001\right)}{8.001}+1\right)-1\right]$$
+                $$b_{inToListI}\left(b_{in}\right)=\operatorname{floor}\left(\operatorname{mod}\left(\frac{b_{in}}{10^{n}},10\right)\right)\operatorname{for}n=\left[8\operatorname{floor}\left(\frac{\log\left(b_{in}+.001\right)}{8.001}+1\right)-1...0\right]$$
+                $$l_{istToBin}\left(l_{ist}\right)=\sum_{n=0}^{l_{ist}.\operatorname{length}-1}\left(10^{n}l_{ist}\left[n+1\right]\right)$$
+                $$l_{istToBinI}\left(l_{ist}\right)=\sum_{n=0}^{l_{ist}.\operatorname{length}-1}\left(10^{l_{ist}.\operatorname{length}-1-n}l_{ist}\left[n+1\right]\right)$$
+
+            </p>
+            <p>
+                I have also implemented a few functions to perform operations on binary numbers.
+                <ul>
+                    <li>XOR</li>
+                    <li>OR</li>
+                    <li>NOT</li>
+                    <li>AND</li>
+                </ul>
+            </p>
+        </div>
+        <h2>2. Architecture</h2>
+        <div class="subtext">
+            <h3>2.1 ALU</h3>
+            <p>
+                The ALU follows mattbatwings' design almost exactly.
+                With 2 8-Bit Inputs, an 8-Bit Output, and a 5-Bit Control Input.
+                <table>
+                    <tr>
+                        <th>Control Input</td>
+                        <th>Function </td>
+                    </tr>
+                    <tr>
+                        <td>00000</td>
+                        <td>Add</td>
+                    </tr>
+                    <tr>
+                        <td>01100</td>
+                        <td>Subtract</td>
+                    </tr>
+                    <tr>
+                        <td>01010</td>
+                        <td>XOR</td>
+                    </tr>
+                    <tr>
+                        <td>00010</td>
+                        <td>XNOR</td>
+                    </tr>
+                    <tr>
+                        <td>00001</td>
+                        <td>OR</td>
+                    </tr>
+                    <tr>
+                        <td>00011</td>
+                        <td>NOR</td>
+                    </tr>
+                    <tr>
+                        <td>11011</td>
+                        <td>AND</td>
+                    </tr>
+                    <tr>
+                        <td>11001</td>
+                        <td>NAND</td>
+                    </tr>
+                </table>
+            </p>
+            <h3>2.2 Registers</h3>
+            <p>
+                The registers don't follow mattbatwings' design exactly because the way he implemented them was specific to Minecraft. 
+                I instead just used desmos' built in list feature to implement the registers.
+            </p>
+        </div>
     </div>
 </body>
 </html>
