@@ -35,24 +35,25 @@
 
             <h3>1.3 Initial Functions</h3>
             <p>
-                I have implemented a few functions to convert numbers to different formats.
+                I implemented a few functions to convert numbers to different formats.
+            </p>
+            <div class="mathjax">
                 $$b_{inToDec}\left(b_{in}\right)=\sum_{n=0}^{\operatorname{floor}\left(\log\left(b_{in}\right)\right)}\left(2^{n}\operatorname{floor}\left(\operatorname{mod}\left(\frac{b_{in}}{10^{n}},10\right)\right)\right)$$
                 $$d_{ecToBin}\left(d_{ec}\right)=\sum_{n=0}^{\operatorname{floor}\left(\log_{2}\left(d_{ec}\right)\right)}10^{n}\operatorname{floor}\left(\operatorname{mod}\left(\frac{d_{ec}}{2^{n}},2\right)\right)$$
                 $$b_{inToList}\left(b_{in}\right)=\operatorname{floor}\left(\operatorname{mod}\left(\frac{b_{in}}{10^{n}},10\right)\right)\operatorname{for}n=\left[0...8\operatorname{floor}\left(\frac{\log\left(b_{in}+.001\right)}{8.001}+1\right)-1\right]$$
-                $$b_{inToListI}\left(b_{in}\right)=\operatorname{floor}\left(\operatorname{mod}\left(\frac{b_{in}}{10^{n}},10\right)\right)\operatorname{for}n=\left[8\operatorname{floor}\left(\frac{\log\left(b_{in}+.001\right)}{8.001}+1\right)-1...0\right]$$
                 $$l_{istToBin}\left(l_{ist}\right)=\sum_{n=0}^{l_{ist}.\operatorname{length}-1}\left(10^{n}l_{ist}\left[n+1\right]\right)$$
+                $$b_{inToListI}\left(b_{in}\right)=\operatorname{floor}\left(\operatorname{mod}\left(\frac{b_{in}}{10^{n}},10\right)\right)\operatorname{for}n=\left[8\operatorname{floor}\left(\frac{\log\left(b_{in}+.001\right)}{8.001}+1\right)-1...0\right]$$
                 $$l_{istToBinI}\left(l_{ist}\right)=\sum_{n=0}^{l_{ist}.\operatorname{length}-1}\left(10^{l_{ist}.\operatorname{length}-1-n}l_{ist}\left[n+1\right]\right)$$
-
-            </p>
+            </div>
             <p>
-                I have also implemented a few functions to perform operations on binary numbers.
-                <ul>
-                    <li>XOR</li>
-                    <li>OR</li>
-                    <li>NOT</li>
-                    <li>AND</li>
-                </ul>
+                I also implemented a few bitwise functions.
             </p>
+            <div class="mathjax">
+                $$a_{nd}\left(A_{in},B_{in}\right)=l_{istToBin}\left(\left\{l=2:1,0\right\}\operatorname{with}l=b_{inToList}\left(A_{in}\right)+b_{inToList}\left(B_{in}\right)\right)$$
+                $$o_{r}\left(A_{in},B_{in}\right)=l_{istToBin}\left(\left\{l\ge1:1,0\right\}\operatorname{with}l=b_{inToList}\left(A_{in}\right)+b_{inToList}\left(B_{in}\right)\right)$$
+                $$x_{or}\left(A_{in},B_{in}\right)=l_{istToBin}\left(\left\{l=1:1,0\right\}\operatorname{with}l=b_{inToList}\left(A_{in}\right)+b_{inToList}\left(B_{in}\right)\right)$$
+                $$n_{ot}\left(A_{in}\right)=l_{istToBin}\left(1-b_{inToList}\left(A_{in}\right)\right)$$
+            </div>
         </div>
         <h2>2. Architecture</h2>
         <div class="subtext">

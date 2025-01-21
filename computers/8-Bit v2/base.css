@@ -82,6 +82,12 @@ nav {
     padding: 0.5rem 1rem;
 }
 
+.mathjax {
+    width: 20%;
+    margin-left: 5rem;
+    margin-right: auto;
+}
+
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
