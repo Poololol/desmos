@@ -27,15 +27,16 @@
         <div class="subtext">
             <h3>1.1 Overview</h3>
             <p>
-                This is a project I've been working on for a while now. It's an 8-Bit Computer implemented in Desmos. 
-                It's based off of a design by <a href="https://www.youtube.com/@mattbatwings">Mattbatwings</a>, who implemented an <a href="https://www.youtube.com/playlist?list=PL5LiOvrbVo8nPTtdXAdSmDWzu85zzdgRT">8-Bit Computer in Minecraft</a>. 
+                This is a project I've been working on for a while. It's an 8-Bit Computer implemented in Desmos. <!--what is bro yapping about-->
+                It's based off of <a href="https://www.youtube.com/@mattbatwings">Mattbatwings'</a>, design of an 
+                <a href="https://www.youtube.com/playlist?list=PL5LiOvrbVo8nPTtdXAdSmDWzu85zzdgRT">8-Bit Computer in Minecraft</a>. 
             </p>
 
             <h3>1.2 Features</h3>
 
             <h3>1.3 Initial Functions</h3>
             <p>
-                I implemented a few functions to convert numbers to different formats.
+                I implemented a few functions to convert numbers to different formats. Such as from decimal to binary and binary to a list.
             </p>
             <div class="mathjax">
                 $$b_{inToDec}\left(b_{in}\right)=\sum_{n=0}^{\operatorname{floor}\left(\log\left(b_{in}\right)\right)}\left(2^{n}\operatorname{floor}\left(\operatorname{mod}\left(\frac{b_{in}}{10^{n}},10\right)\right)\right)$$
@@ -46,7 +47,7 @@
                 $$l_{istToBinI}\left(l_{ist}\right)=\sum_{n=0}^{l_{ist}.\operatorname{length}-1}\left(10^{l_{ist}.\operatorname{length}-1-n}l_{ist}\left[n+1\right]\right)$$
             </div>
             <p>
-                I also implemented a few bitwise functions.
+                I also implemented a few bitwise logic functions. Such as AND, OR, XOR, and NOT.
             </p>
             <div class="mathjax">
                 $$a_{nd}\left(A_{in},B_{in}\right)=l_{istToBin}\left(\left\{l=2:1,0\right\}\operatorname{with}l=b_{inToList}\left(A_{in}\right)+b_{inToList}\left(B_{in}\right)\right)$$
@@ -72,7 +73,7 @@
                     </tr>
                     <tr>
                         <td>01100</td>
-                        <td>Subtract</td>
+                        <td>Sub</td>
                     </tr>
                     <tr>
                         <td>01010</td>
@@ -103,9 +104,21 @@
             <h3>2.2 Registers</h3>
             <p>
                 The registers don't follow mattbatwings' design exactly because the way he implemented them was specific to Minecraft. 
-                I instead just used desmos' built in list feature to implement the registers.
+                I instead just used desmos' built in list feature to implement the registers. I also made functions to read and write from the registers, 
+                both functions take a 4-bit binary number as an address and the write fucntion takes an 8-bit number as the data.
             </p>
+            <div class="mathjax">
+                $$r_{eadRegister}\left(a_{ddress}\right)=\left\{a_{ddress}=0:0,r_{egisters}\left[b_{inToDec}\left(a_{ddress}\right)\right]\right\}$$
+                $$w_{riteRegister}\left(a_{ddress},d_{ata}\right)=\left\{c_{ontrol}\left[1\right]=1:r_{egisters}\to\left(\left\{i=b_{inToDec}\left(a_{ddress}\right):d_{ata},r_{egisters}\left[i\right]\right\}\operatorname{for}i=\left[1...r_{egisters}.\operatorname{length}\right]\right)\right\}$$
+            </div>
         </div>
     </div>
+    <div style="margin-bottom: 5rem;">
+    </div>
+    <nav class="navbar" style="background-color: #000000">
+        <div class="app-header">
+            <a class="title" style="color: #f0ab3c">Desmos 8-Bit Computer</a>
+        </div>
+    </nav>
 </body>
 </html>
