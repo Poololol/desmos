@@ -18,7 +18,7 @@
     
     <nav class="navbar" style="background-color: #000000">
         <div class="app-header">
-            <a class="title" style="color: #f0ab3c">Desmos 8-Bit Computer</a>
+            <a class="title" style="color: #f0ab3c" href="">Desmos 8-Bit Computer - WIP</a>
         </div>
     </nav>
     
@@ -28,7 +28,7 @@
             <h3>1.1 Overview</h3>
             <p>
                 This is a project I've been working on for a while. It's an 8-Bit Computer implemented in Desmos. <!--what is bro yapping about-->
-                It's based off of <a href="https://www.youtube.com/@mattbatwings">Mattbatwings</a>' design of an 
+                It's based off of <a href="https://www.youtube.com/@mattbatwings">Mattbatwings'</a> design of an 
                 <a href="https://www.youtube.com/playlist?list=PL5LiOvrbVo8nPTtdXAdSmDWzu85zzdgRT">8-Bit Computer in Minecraft</a>. 
             </p>
 
@@ -36,7 +36,7 @@
             <p>
                 The binary numbers in the computer are either represented as a binary number or a list of single bits. The list representation is a 
                 list of the bits in the binary number ordered from least significant bit to most significant bit, for example the list representation 
-                of the binary number \(11110000_{b}\) would be \(\left[0,0,0,0,1,1,1,1\right]\).
+                of the binary number \(11110000_{b}\) would be \(\boldsymbol[0, 0, 0, 0, 1, 1, 1, 1 \boldsymbol]\).
             </p>
 
             <h3>1.3 Initial Functions</h3>
@@ -57,8 +57,10 @@
                 $$l_{istToBinI}\left(l_{ist}\right)=\sum_{n=0}^{l_{ist}.\operatorname{length}-1}\left(10^{l_{ist}.\operatorname{length}-1-n}l_{ist}\left[n+1\right]\right)$$
             </div>
             <p>
-                I also implemented a few bitwise logic functions. Such as AND, OR, XOR, and NOT. The AND, OR and XOR functions all take in two 
-                binary numbers of any length and return a binary number that is the result of the respective operation.
+                I also implemented the bitwise logic functions, AND, OR, XOR, and NOT. The AND, OR and XOR functions all take in two 
+                binary numbers of any length and return a binary number that is the result of the respective operation. The NOT function takes in a
+                binary number and returns the inverted version of the number. The functions are implemented by converting the numbers to list 
+                representation then using the built in per element operations and conditionals for lists.
             </p>
             <div class="mathjax">
                 $$a_{nd}\left(A_{in},B_{in}\right)=l_{istToBin}\left(\left\{l=2:1,0\right\}\operatorname{with}l=b_{inToList}\left(A_{in}\right)+b_{inToList}\left(B_{in}\right)\right)$$
@@ -114,21 +116,26 @@
             </p>
             <h3>2.2 Registers</h3>
             <p>
-                The registers don't follow mattbatwings' design exactly because the way he implemented them was specific to Minecraft. 
-                I instead just used desmos' built in list feature to implement the registers. I also made functions to read and write from the 
-                registers, both functions take a 4-bit binary number as an address and the write fucntion takes an 8-bit number as the data.
+                The registers don't follow mattbatwings' design because the way he implemented them was specific to Minecraft. 
+                Instead I just used desmos' built in list feature to implement the registers. I made functions to read and write from the 
+                registers, both functions take a 4-bit binary number as an address and the write function takes an 8-bit number as the data.
             </p>
             <div class="mathjax">
                 $$r_{eadRegister}\left(a_{ddress}\right)=\left\{a_{ddress}=0:0,r_{egisters}\left[b_{inToDec}\left(a_{ddress}\right)\right]\right\}$$
                 $$w_{riteRegister}\left(a_{ddress},d_{ata}\right)=\left\{c_{ontrol}\left[1\right]=1:r_{egisters}\to\left(\left\{i=b_{inToDec}\left(a_{ddress}\right):d_{ata},r_{egisters}\left[i\right]\right\}\operatorname{for}i=\left[1...r_{egisters}.\operatorname{length}\right]\right)\right\}$$
             </div>
+
+            <h3>2.3 Instruction Memory</h3>
+            <p>
+                The Instruction memory is very similar to the registers only longer and with 
+            </p>
         </div>
     </div>
     <div style="margin-bottom: 5rem;">
     </div>
     <nav class="navbar" style="background-color: #000000">
-        <div class="app-header">
-            <a class="title" style="color: #f0ab3c">Desmos 8-Bit Computer</a>
+        <div class="app-header" style="padding: 2%">
+            <a style="color: #f0ab3c">Poololol</a>
         </div>
     </nav>
 </body>
