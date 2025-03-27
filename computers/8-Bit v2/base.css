@@ -4,8 +4,8 @@ body {
 
 .text {
   max-width: fit-content;
-  margin-left: 3rem;
-  margin-right: auto;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .subtext {
@@ -16,13 +16,13 @@ body {
 
 h3 {
     margin-left: 0rem;
-    margin-top: 0rem;
+    margin-top: 2rem;
     margin-bottom: 0rem;
 }
 
 h2 {
     margin-left: 0rem;
-    margin-bottom: 0rem;
+    margin-bottom: -2rem;
 }
 
 p {
@@ -100,6 +100,7 @@ td {
     border: 1px solid #000000;
     text-align: center;
     padding: 2px;
+    text-wrap: nowrap;
 }
 
 th {

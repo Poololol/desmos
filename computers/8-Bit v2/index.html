@@ -119,16 +119,89 @@
                 The registers don't follow mattbatwings' design because the way he implemented them was specific to Minecraft. 
                 Instead I just used desmos' built in list feature to implement the registers. I made functions to read and write from the 
                 registers, both functions take a 4-bit binary number as an address and the write function takes an 8-bit number as the data.
+                The write function will only work if the register enable signal is on. The register list has 15 registers and the read function simulates 
+                a zero register by returning 0 if the address is 0. 
             </p>
             <div class="mathjax">
                 $$r_{eadRegister}\left(a_{ddress}\right)=\left\{a_{ddress}=0:0,r_{egisters}\left[b_{inToDec}\left(a_{ddress}\right)\right]\right\}$$
                 $$w_{riteRegister}\left(a_{ddress},d_{ata}\right)=\left\{c_{ontrol}\left[1\right]=1:r_{egisters}\to\left(\left\{i=b_{inToDec}\left(a_{ddress}\right):d_{ata},r_{egisters}\left[i\right]\right\}\operatorname{for}i=\left[1...r_{egisters}.\operatorname{length}\right]\right)\right\}$$
             </div>
 
-            <h3>2.3 Instruction Memory</h3>
+            <h3>2.3 Instruction Set</h3>
             <p>
-                The Instruction memory is very similar to the registers only longer and with 
+                The instruction set is the same as the one used in the Minecraft computer.
             </p>
+            <table>
+                <tr>
+                  <th colspan="26">Instruction Set</th>
+                </tr>
+                <tr>
+                  <td colspan="8">Byte 1</td> <td colspan="8">Byte 2</td> <td colspan="7">CROM</td> <td colspan="3" rowspan="2" style="background-color: #000000;"></td>
+                </tr>
+                <tr>
+                  <td>7</td> <td>6</td> <td>5</td> <td>4</td> <td>3</td> <td>2</td> <td>1</td> <td>0</td> <td>7</td> <td>6</td> <td>5</td> <td>4</td> <td>3</td> <td>2</td> <td>1</td> <td>0</td> <td colspan="6">ALU</td> <td> </td>
+                </tr>
+                <tr>
+                  <td colspan="4">Opcode</td> <td colspan="12">Operands</td> <td>!A</td> <td>!B</td> <td>CI</td> <td>FC</td> <td>OR</td> <td>RS</td> <td>EN</td> <td>Mnumonic</td> <td>Description</td> <td>Psuedocode</td>
+                </tr>
+                <tr>
+                  <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td>
+                </tr>
+                <tr>
+                  <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td>
+                </tr>
+                <tr>
+                  <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>Add</td> <td>Adds A and B</td> <td>C → A + B</td>
+                </tr>
+                <tr>
+                  <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>Sub</td> <td>Subtracts B from A</td> <td>C → A - B</td>
+                </tr>
+                <tr>
+                  <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>NOR</td> <td>A NOR B</td> <td>C → !(A | B)</td>
+                </tr>
+                <tr>
+                  <td>0</td> <td>1</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>AND</td> <td>A AND B</td> <td>C → A &amp; B</td>
+                </tr>
+                <tr>
+                  <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td>0</td> <td>1</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td>XOR</td> <td>A XOR B</td> <td>C → !(A ^ B)</td>
+                </tr>
+                <tr>
+                  <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4" style="background-color: #000000;"></td> <td colspan="4">Reg C</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>RSH</td> <td>Right Shift A by one</td> <td>C → A &gt;&gt; 1</td>
+                </tr>
+                <tr>
+                  <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td>
+                </tr>
+                <tr>
+                  <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td>
+                </tr>
+                <tr>
+                  <td>1</td> <td>0</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td>
+                </tr>
+                <tr>
+                  <td>1</td> <td>0</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td>
+                </tr>
+                <tr>
+                  <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td>
+                </tr>
+                <tr>
+                  <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td>
+                </tr>
+                <tr>
+                  <td>1</td> <td>1</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td>
+                </tr>
+                <tr>
+                  <td>1</td> <td>1</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td>
+                </tr>
+            </table>
+
+            <h3>2.4 Instruction Memory</h3>
+            <p>
+                The instruction memory is very similar to the registers only with 1024 elements and 16 bit numbers instead.
+            </p>
+            <div class="mathjax">
+                $$r_{eadInstruction}\left(a_{ddress}\right)=i_{nstructions}\left[b_{inToDec}\left(a_{ddress}\right)+1\right]$$
+                $$w_{riteInstruction}\left(a_{ddress},d_{ata}\right)=i_{nstructions}\to\left(\left\{i=b_{inToDec}\left(a_{ddress}\right):d_{ata},i_{nstructions}\left[i+1\right]\right\}\operatorname{for}i=\left[0...i_{nstructions}.\operatorname{length}-1\right]\right)$$
+            </div>
         </div>
     </div>
     <div style="margin-bottom: 5rem;">
