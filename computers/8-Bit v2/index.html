@@ -75,43 +75,95 @@
             <p>
                 The ALU follows mattbatwings' design almost exactly.
                 With 2 8-Bit Inputs, an 8-Bit Output, and a 5-Bit Control Input.
-                <table>
-                    <tr>
-                        <th>Control Input</td>
-                        <th>Function </td>
-                    </tr>
-                    <tr>
-                        <td>00000</td>
-                        <td>Add</td>
-                    </tr>
-                    <tr>
-                        <td>01100</td>
-                        <td>Sub</td>
-                    </tr>
-                    <tr>
-                        <td>01010</td>
-                        <td>XOR</td>
-                    </tr>
-                    <tr>
-                        <td>00010</td>
-                        <td>XNOR</td>
-                    </tr>
-                    <tr>
-                        <td>00001</td>
-                        <td>OR</td>
-                    </tr>
-                    <tr>
-                        <td>00011</td>
-                        <td>NOR</td>
-                    </tr>
-                    <tr>
-                        <td>11011</td>
-                        <td>AND</td>
-                    </tr>
-                    <tr>
-                        <td>11001</td>
-                        <td>NAND</td>
-                    </tr>
+                <table style="width: 30%;" class="alu">
+                  <tr>
+                    <th colspan="7">ALU</th>
+                  </tr>
+                  <tr>
+                    <td style="background-color: #000000;"> </td>
+                    <td colspan="5">Mode</td>
+                    <td rowspan="2">5-Bit Code</td>
+                  </tr>
+                  <tr>
+                    <td style="background-color: #000000;"> </td>
+                    <td>!A</td>
+                    <td>!B</td>
+                    <td>Carry In</td>
+                    <td>Flood Carry</td>
+                    <td>XOR \(\to\) OR</td>
+                  </tr>
+                  <tr>
+                    <td>Add</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>00000</td>
+                  </tr>
+                  <tr>
+                    <td>Sub</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>01100</td>
+                  </tr>
+                  <tr>
+                    <td>XOR</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>01010</td>
+                  </tr>
+                  <tr>
+                    <td>XNOR</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>00010</td>
+                  </tr>
+                  <tr>
+                    <td>OR</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>00001</td>
+                  </tr>
+                  <tr>
+                    <td>NOR</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>00011</td>
+                  </tr>
+                  <tr>
+                    <td>AND</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>11011</td>
+                  </tr>
+                  <tr>
+                    <td>NAND</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>11001</td>
+                  </tr>
                 </table>
             </p>
             <h3>2.2 Registers</h3>
@@ -131,7 +183,7 @@
             <p>
                 The instruction set is the same as the one used in the Minecraft computer.
             </p>
-            <table>
+            <table style="width: 80%;" class="instructions">
                 <tr>
                   <th colspan="26">Instruction Set</th>
                 </tr>
@@ -151,22 +203,22 @@
                   <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td>
                 </tr>
                 <tr>
-                  <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>Add</td> <td>Adds A and B</td> <td>C → A + B</td>
+                  <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>Add</td> <td>Adds A and B</td> <td>C \(\to\) A + B</td>
                 </tr>
                 <tr>
-                  <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>Sub</td> <td>Subtracts B from A</td> <td>C → A - B</td>
+                  <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>Sub</td> <td>Subtracts B from A</td> <td>C \(\to\) A - B</td>
                 </tr>
                 <tr>
-                  <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>NOR</td> <td>A NOR B</td> <td>C → !(A | B)</td>
+                  <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>NOR</td> <td>A NOR B</td> <td>C \(\to\) !(A | B)</td>
                 </tr>
                 <tr>
-                  <td>0</td> <td>1</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>AND</td> <td>A AND B</td> <td>C → A &amp; B</td>
+                  <td>0</td> <td>1</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>AND</td> <td>A AND B</td> <td>C \(\to\) A &amp; B</td>
                 </tr>
                 <tr>
-                  <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td>0</td> <td>1</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td>XOR</td> <td>A XOR B</td> <td>C → !(A ^ B)</td>
+                  <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td>0</td> <td>1</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td>XOR</td> <td>A XOR B</td> <td>C \(\to\) !(A ^ B)</td>
                 </tr>
                 <tr>
-                  <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4" style="background-color: #000000;"></td> <td colspan="4">Reg C</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>RSH</td> <td>Right Shift A by one</td> <td>C → A &gt;&gt; 1</td>
+                  <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4" style="background-color: #000000;"></td> <td colspan="4">Reg C</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>RSH</td> <td>Right Shift A by one</td> <td>C \(\to\) A &gt;&gt; 1</td>
                 </tr>
                 <tr>
                   <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td>

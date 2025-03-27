@@ -93,9 +93,46 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     margin-left: 2rem;
-    margin-right: auto;
-  }
-  
+    margin-right: 2rem;
+    border: 2px solid #000000;
+}
+
+.instructions tr:nth-child(n+5) td:nth-child(7n) {
+    border-right: 2px solid #000000;
+} 
+.instructions tr:nth-child(n+5) td:nth-child(4) {
+    border-right: 2px solid #666666;
+}
+.instructions tr:nth-child(4) td:nth-child(1) {
+    border-right: 2px solid #666666;
+}
+.instructions tr:nth-child(2) td:nth-child(n+2) {
+    border-right: 2px solid #000000;
+} 
+.instructions tr:nth-child(4) td:nth-child(7n+2) {
+    border-right: 2px solid #000000;
+} 
+.instructions tr:nth-child(3) td:nth-child(2n+16) {
+    border-right: 2px solid #000000;
+} 
+.instructions tr:nth-child(4) {
+    border-bottom: 2px solid #000000;
+}
+.instructions tr:nth-child(3) td:nth-last-child(n+3) {
+    border-bottom: 2px solid #666666;
+}
+
+.alu tr:nth-child(3) td:nth-child(n) {
+    border-bottom: 2px solid #000000;
+}
+.alu tr:nth-child(n) td:nth-child(5n+1) {
+    border-right: 2px solid #000000;
+}
+.alu tr:nth-child(2) td:nth-child(3) {
+    border-left: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+}
+
 td {
     border: 1px solid #000000;
     text-align: center;
