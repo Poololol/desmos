@@ -32,7 +32,7 @@
                 <a href="https://www.youtube.com/playlist?list=PL5LiOvrbVo8nPTtdXAdSmDWzu85zzdgRT">8-Bit Computer in Minecraft</a>. 
             </p>
 
-            <h3>1.2 Represenattions</h3>
+            <h3>1.2 Representations</h3>
             <p>
                 The binary numbers in the computer are either represented as a binary number or a list of single bits. The list representation is a 
                 list of the bits in the binary number ordered from least significant bit to most significant bit, for example the list representation 
@@ -46,15 +46,17 @@
                 to the other base. The \(b_{inToList}\) function takes in a binary number of any length and returns a list representation with a 
                 length equal to the smallest multiple of 8 larger than the number of bits in the input number. \(l_{istToBin}\) takes a list 
                 representation and returns the binary equivalent. I also made inverted versions of the binary to list and list to binary functions 
-                which just invert the order of the bits in the list.
+                which just invert the order of the bits in the list. The \(b_{inToListS}\) function converts the inputted binary number to a list 
+                representation with length \(s\).
             </p>
             <div class="mathjax">
                 $$b_{inToDec}\left(b_{in}\right)=\sum_{n=0}^{\operatorname{floor}\left(\log\left(b_{in}\right)\right)}\left(2^{n}\operatorname{floor}\left(\operatorname{mod}\left(\frac{b_{in}}{10^{n}},10\right)\right)\right)$$
                 $$d_{ecToBin}\left(d_{ec}\right)=\sum_{n=0}^{\operatorname{floor}\left(\log_{2}\left(d_{ec}\right)\right)}10^{n}\operatorname{floor}\left(\operatorname{mod}\left(\frac{d_{ec}}{2^{n}},2\right)\right)$$
-                $$b_{inToList}\left(b_{in}\right)=\operatorname{floor}\left(\operatorname{mod}\left(\frac{b_{in}}{10^{n}},10\right)\right)\operatorname{for}n=\left[0...8\operatorname{floor}\left(\frac{\log\left(b_{in}+.001\right)}{8.001}+1\right)-1\right]$$
+                $$b_{inToList}\left(b_{in}\right)=\operatorname{floor}\left(\operatorname{mod}\left(\frac{b_{in}}{10^{n}},10\right)\right)\operatorname{for}n=\left[0 ...8\operatorname{floor}\left(\frac{\log\left(b_{in}+.001\right)}{8.001}+1\right)-1\right]$$
                 $$l_{istToBin}\left(l_{ist}\right)=\sum_{n=0}^{l_{ist}.\operatorname{length}-1}\left(10^{n}l_{ist}\left[n+1\right]\right)$$
-                $$b_{inToListI}\left(b_{in}\right)=\operatorname{floor}\left(\operatorname{mod}\left(\frac{b_{in}}{10^{n}},10\right)\right)\operatorname{for}n=\left[8\operatorname{floor}\left(\frac{\log\left(b_{in}+.001\right)}{8.001}+1\right)-1...0\right]$$
+                $$b_{inToListI}\left(b_{in}\right)=\operatorname{floor}\left(\operatorname{mod}\left(\frac{b_{in}}{10^{n}},10\right)\right)\operatorname{for}n=\left[8\operatorname{floor}\left(\frac{\log\left(b_{in}+.001\right)}{8.001}+1\right)-1 ...0\right]$$
                 $$l_{istToBinI}\left(l_{ist}\right)=\sum_{n=0}^{l_{ist}.\operatorname{length}-1}\left(10^{l_{ist}.\operatorname{length}-1-n}l_{ist}\left[n+1\right]\right)$$
+                $$b_{inToListS}\left(b_{in},s\right)=\operatorname{floor}\left(\operatorname{mod}\left(\frac{b_{in}}{10^{n}},10\right)\right)\operatorname{for}n=\left[0 ...s-1\right]$$
             </div>
             <p>
                 I also implemented the bitwise logic functions, AND, OR, XOR, and NOT. The AND, OR and XOR functions all take in two 
@@ -176,7 +178,7 @@
             </p>
             <div class="mathjax">
                 $$r_{eadRegister}\left(a_{ddress}\right)=\left\{a_{ddress}=0:0,r_{egisters}\left[b_{inToDec}\left(a_{ddress}\right)\right]\right\}$$
-                $$w_{riteRegister}\left(a_{ddress},d_{ata}\right)=\left\{c_{ontrol}\left[1\right]=1:r_{egisters}\to\left(\left\{i=b_{inToDec}\left(a_{ddress}\right):d_{ata},r_{egisters}\left[i\right]\right\}\operatorname{for}i=\left[1...r_{egisters}.\operatorname{length}\right]\right)\right\}$$
+                $$w_{riteRegister}\left(a_{ddress},d_{ata}\right)=\left\{c_{ontrol}\left[1\right]=1:r_{egisters}\to\left(\left\{i=b_{inToDec}\left(a_{ddress}\right):d_{ata},r_{egisters}\left[i\right]\right\}\operatorname{for}i=\left[1 ...r_{egisters}.\operatorname{length}\right]\right)\right\}$$
             </div>
 
             <h3>2.3 Instruction Set</h3>
@@ -252,7 +254,30 @@
             </p>
             <div class="mathjax">
                 $$r_{eadInstruction}\left(a_{ddress}\right)=i_{nstructions}\left[b_{inToDec}\left(a_{ddress}\right)+1\right]$$
-                $$w_{riteInstruction}\left(a_{ddress},d_{ata}\right)=i_{nstructions}\to\left(\left\{i=b_{inToDec}\left(a_{ddress}\right):d_{ata},i_{nstructions}\left[i+1\right]\right\}\operatorname{for}i=\left[0...i_{nstructions}.\operatorname{length}-1\right]\right)$$
+                $$w_{riteInstruction}\left(a_{ddress},d_{ata}\right)=i_{nstructions}\to\left(\left\{i=b_{inToDec}\left(a_{ddress}\right):d_{ata},i_{nstructions}\left[i+1\right]\right\}\operatorname{for}i=\left[0 ...i_{nstructions}.\operatorname{length}-1\right]\right)$$
+            </div>
+
+            <h3>2.5 Program Counter and Connections</h3>
+            <p>
+                The program counter is very easy to implement as it is just a single variable. Once I had the program counter variable I could start
+                to connect all the different parts of the computer together. To get the current instruction I just read the instruction memory at the
+                program counter's location.
+            </p>
+            <div class="mathjax">
+                $$i_{nstruction}=b_{inToListS}\left(r_{eadInstruction}\left(p_{c}\right),16\right)$$
+            </div>
+            <p>
+                Once I had the current instruction I could split it up into its different parts and use them for their respective purpose. I could 
+                read from the control ROM using the first 4 bits of the instruction (which is the last 4 elements in the list representation) which 
+                is the opcode. I got the register numbers from the last 12 bits of the instruction which then could be used to read from the 
+                registers.
+            </p>
+            <div class="mathjax">
+                $$c_{ontrol}=b_{inToListS}\left(r_{eadCrom}\left(l_{istToBin}\left(i_{nstruction}\left[13 ...16\right]\right)\right),7\right)$$
+                $$r_{1}=l_{istToBin}\left(i_{nstruction}\left[9 ...12\right]\right)$$
+                $$r_{2}=l_{istToBin}\left(i_{nstruction}\left[5 ...8 \right]\right)$$
+                $$r_{3}=l_{istToBin}\left(i_{nstruction}\left[1 ...4 \right]\right)$$
+                $$d_{ataALU}=A_{LU}\left(r_{eadRegister}\left(r_{1}\right),r_{eadRegister}\left(r_{2}\right),l_{istToBin}\left(c_{ontrol}\left[2 ...7\right]\right)\right)$$
             </div>
         </div>
     </div>
