@@ -1,0 +1,3 @@
+*.code-workspace
+screenshots/
+__pycache__
