@@ -6,7 +6,7 @@ definitions = {}
 labels = {}
 with open(file_path, 'r') as inputFile:
     i = 0
-    with open(file_path.rpartition('.')[0]+'.out', 'w') as outputFile:
+    with open(file_path.rpartition('.')[0]+'.bin', 'w') as outputFile:
         for line in inputFile:
             if line[0] == '.':
                 labels[line[1:].replace('\n','')] = i
