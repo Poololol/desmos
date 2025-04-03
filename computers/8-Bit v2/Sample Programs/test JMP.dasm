@@ -1,0 +1,8 @@
+LDI r2 5
+NOP
+NOP
+NOP
+LDI r2 11
+NOP
+NOP
+JMP 0

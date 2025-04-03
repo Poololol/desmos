@@ -1,0 +1,13 @@
+LDI r1 17
+LDI r2 5
+SUB r1 r2 r3
+LDI r7 19
+DEC r7
+DEC r7
+DEC r7
+DEC r7
+DEC r7
+DEC r7
+DEC r7
+DEC r7
+SUB r3 r7 r6
