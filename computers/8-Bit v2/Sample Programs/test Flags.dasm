@@ -1,0 +1,11 @@
+LDI r1 1
+LDI r2 255
+ADD r1 r2 r3
+NOP
+NOP
+NOP
+LDI r4 73
+NOP
+NOP
+NOP
+ADD r1 r4 r5

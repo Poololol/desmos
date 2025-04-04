@@ -1,4 +1,4 @@
-file_path = 'fibfull.dasm'
+file_path = 'test Flags.dasm'
 opcodes = {'ADD': '0010','SUB': '0011','XOR': '0100','NOR': '0101','AND': '0110','RSH': '0111', 'LDI': '1000', 'ADI': '1001', 'JMP': '1010'}
 psuedocodes = {'INC': opcodes['ADI'], 'DEC': opcodes['ADI']}
 psuedocodes2 = {'INC': 1, 'DEC': 2**8-1}
