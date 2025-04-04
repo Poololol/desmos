@@ -96,61 +96,31 @@ table {
     margin-right: 2rem;
     border: 2px solid #000000;
 }
+.hide {
+    visibility: hidden;
+    display: none;
 
-.instructions tr:nth-child(n+5) td:nth-child(11n-4) {
-    border-right: 2px solid #000000;
-}
-.instructions tr:nth-child(13) td:nth-child(11n-5) {
-    border-right: 2px solid #000000;
-}
-.instructions tr:nth-child(13) td:nth-child(11n-4) {
-    border-right: none;
-}
-.instructions tr:nth-child(14) td:nth-child(11n-5) {
-    border-right: 2px solid #000000;
-}
-.instructions tr:nth-child(14) td:nth-child(11n-4) {
-    border-right: none;
 }
 
-.instructions tr:nth-child(n+5) td:nth-child(11n+4) {
+.instructions tr:nth-child(n+5) td:nth-child(12n-5) {
+    border-right: 2px solid #000000;
+}
+
+.instructions tr:nth-child(n+5) td:nth-child(12n+4) {
     border-right: 2px solid #666666;
 }
 .instructions tr:nth-child(n+5) td:nth-child(8) {
     border-right: 2px solid #666666;
 }
-.instructions tr:nth-child(13) td:nth-child(14) {
-    border-right: 2px solid #666;
-}
-.instructions tr:nth-child(13) td:nth-child(15) {
-    border-right: none;
-}
-.instructions tr:nth-child(13) td:nth-child(7) {
-    border-right: 2px solid #666;
-}
-.instructions tr:nth-child(13) td:nth-child(8) {
-    border-right: none;
-}
-.instructions tr:nth-child(14) td:nth-child(14) {
-    border-right: 2px solid #666;
-}
-.instructions tr:nth-child(14) td:nth-child(15) {
-    border-right: none;
-}
-.instructions tr:nth-child(14) td:nth-child(7) {
-    border-right: 2px solid #666;
-}
-.instructions tr:nth-child(14) td:nth-child(8) {
-    border-right: none;
-}
 
-.instructions tr:nth-child(4) td:nth-child(9n+1) {
+
+.instructions tr:nth-child(4) td:nth-child(10n+1) {
     border-right: 2px solid #666666;
 }
 .instructions tr:nth-child(2) td:nth-child(n+2) {
     border-right: 2px solid #000000;
 } 
-.instructions tr:nth-child(4) td:nth-child(11n+2) {
+.instructions tr:nth-child(4) td:nth-child(12n+2) {
     border-right: 2px solid #000000;
 } 
 .instructions tr:nth-child(3) td:nth-child(n+17) {

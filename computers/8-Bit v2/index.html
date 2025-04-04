@@ -188,64 +188,64 @@
             </p>
             <table style="width: 80%;" class="instructions">
                 <tr>
-                    <th colspan="30">Instruction Set</th>
+                    <th colspan="31">Instruction Set</th>
                 </tr>
                 <tr>
-                    <td colspan="8">Byte 1</td> <td colspan="8">Byte 2</td> <td colspan="11">CROM</td> <td colspan="3" rowspan="2" style="background-color: #000000;"></td>
+                    <td colspan="8">Byte 1</td> <td colspan="8">Byte 2</td> <td colspan="12">CROM</td> <td colspan="3" rowspan="2" style="background-color: #000000;"></td>
                 </tr>
                 <tr>
-                    <td>7</td> <td>6</td> <td>5</td> <td>4</td> <td>3</td> <td>2</td> <td>1</td> <td>0</td> <td>7</td> <td>6</td> <td>5</td> <td>4</td> <td>3</td> <td>2</td> <td>1</td> <td>0</td> <td>PC</td> <td colspan="7">ALU</td> <td colspan="3">Registers</td>
+                    <td>7</td> <td>6</td> <td>5</td> <td>4</td> <td>3</td> <td>2</td> <td>1</td> <td>0</td> <td>7</td> <td>6</td> <td>5</td> <td>4</td> <td>3</td> <td>2</td> <td>1</td> <td>0</td> <td colspan="1">PC</td> <td colspan="8">ALU</td> <td colspan="3">Registers</td>
                 </tr>
                 <tr>
-                    <td colspan="4">Opcode</td> <td colspan="12">Operands</td>                                                                                           <td>JMP</td><td>!A</td><td>!B</td><td>CI</td><td>FC</td><td>OR</td><td>RS</td><td>ALU Mux</td><td>EN</td><td>Data Mux</td><td>Dest Mux</td><td>Mnumonic</td><td>Description</td><td>Psuedocode</td>
+                    <td colspan="4">Opcode</td> <td colspan="12">Operands</td>                                                                                           <td>JMP</td><td>!A</td><td>!B</td><td>CI</td><td>FC</td><td>OR</td><td>RS</td><td>ALU Mux</td><td>Flags</td><td>EN</td><td>Data Mux</td><td>Dest Mux</td><td>Mnumonic</td><td>Description</td><td>Psuedocode</td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td colspan="4"class="black"></td><td colspan="4"class="black"></td><td colspan="4"class="black"></td>    <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>X</td> <td>X</td> <td>NOP</td> <td>No Operation</td> <td> </td>
+                    <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td colspan="4"class="black"></td><td colspan="4"class="black"></td><td colspan="4"class="black"></td>    <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>NOP</td> <td>No Operation</td> <td> </td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
+                    <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>Add</td> <td>Adds A and B</td> <td>C \(\to\) A + B</td>
+                    <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>Add</td> <td>Adds A and B</td> <td>C \(\to\) A + B</td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>Sub</td> <td>Subtracts B from A</td> <td>C \(\to\) A - B</td>
+                    <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>Sub</td> <td>Subtracts B from A</td> <td>C \(\to\) A - B</td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>NOR</td> <td>A NOR B</td> <td>C \(\to\) !(A | B)</td>
+                    <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>NOR</td> <td>A NOR B</td> <td>C \(\to\) !(A | B)</td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>1</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>AND</td> <td>A AND B</td> <td>C \(\to\) A &amp; B</td>
+                    <td>0</td> <td>1</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>AND</td> <td>A AND B</td> <td>C \(\to\) A &amp; B</td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>XOR</td> <td>A XOR B</td> <td>C \(\to\) !(A ^ B)</td>
+                    <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>XOR</td> <td>A XOR B</td> <td>C \(\to\) !(A ^ B)</td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4" class="black"></td> <td colspan="4">Reg C</td>                 <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>RSH</td> <td>Right Shift A by one</td> <td>C \(\to\) A &gt;&gt; 1</td>
+                    <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4" class="black"></td> <td colspan="4">Reg C</td>                 <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>RSH</td> <td>Right Shift A by one</td> <td>C \(\to\) A &gt;&gt; 1</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="8">Immediate</td>                                                 <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>1</td> <td>1</td> <td>1</td> <td>LDI</td> <td>Load Immediate</td> <td>A \(\to\) Immediate</td>
+                    <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td><td class="hide"></td> <td colspan="8">Immediate</td>                           <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td>LDI</td> <td>Load Immediate</td> <td>A \(\to\) Immediate</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="8">Immediate</td>                                                 <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>ADI</td> <td>Add Immediate</td> <td>A \(\to\) A + Immediate</td>
+                    <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td><td class="hide"></td> <td colspan="8">Immediate</td>`                          <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>ADI</td> <td>Add Immediate</td> <td>A \(\to\) A + Immediate</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>0</td> <td>1</td> <td>0</td> <td class="black"></td><td class="black"></td> <td colspan="10">Address</td>                              <td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>X</td> <td>X</td> <td>JMP</td> <td>Jump</td> <td>PC \(\to\) Address</td>
+                    <td>1</td> <td>0</td> <td>1</td> <td>0</td> <td class="black"></td><td class="black"></td> <td colspan="10">Address</td>                              <td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>JMP</td> <td>Jump</td> <td>PC \(\to\) Address</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>0</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
+                    <td>1</td> <td>0</td> <td>1</td> <td>1</td> <td colspan="2">Cond</td> <td class="hide"></td> <td colspan="10">Address</td>                            <td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>BRH</td> <td>Branch</td> <td>If cond: PC \(\to\) Address</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
+                    <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
+                    <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>1</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
+                    <td>1</td> <td>1</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>1</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
+                    <td>1</td> <td>1</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
                 </tr>
             </table>
 
