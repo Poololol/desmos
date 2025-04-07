@@ -1,0 +1,3 @@
+LDI r1 2
+DEC r1
+BRH carry 1

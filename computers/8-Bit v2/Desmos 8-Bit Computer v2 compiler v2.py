@@ -1,8 +1,8 @@
-file_path = 'test Flags.dasm'
-opcodes = {'ADD': '0010','SUB': '0011','XOR': '0100','NOR': '0101','AND': '0110','RSH': '0111', 'LDI': '1000', 'ADI': '1001', 'JMP': '1010'}
+file_path = 'test BRH.dasm'
+opcodes = {'ADD': '0010','SUB': '0011','XOR': '0100','NOR': '0101','AND': '0110','RSH': '0111', 'LDI': '1000', 'ADI': '1001', 'JMP': '1010', 'BRH': '1011'}
 psuedocodes = {'INC': opcodes['ADI'], 'DEC': opcodes['ADI']}
 psuedocodes2 = {'INC': 1, 'DEC': 2**8-1}
-definitions = {}
+definitions = {'zero': '00', 'notzero': '01', 'carry': '10', 'notcarry': '11', '=': '00', '!=': '01', '>=': '10', '<': '11'}
 labels = {}
 with open(file_path, 'r') as inputFile:
     i = 0
@@ -15,6 +15,8 @@ with open(file_path, 'r') as inputFile:
                 defined = line[8:].replace('\n','').split(' ')
                 definitions[defined[0]] = defined[1]
                 print(definitions)
+            elif line[0] == '\n':
+                continue
             else:
                 opcode = line[:3]
                 operands = line[4:].replace('\n','').split(' ')
@@ -73,12 +75,16 @@ with open(file_path, 'r') as inputFile:
                     binary.append(format(psuedocodes2[opcode], '08b'))
                     #binary.append(format(int(operand[1:]), '04b'))
                     outputFile.write(psuedocodes[opcode] + ''.join(binary) + '\n')
-                elif opcode in ['JMP']:
+                elif opcode in ['JMP', 'BRH']:
                     binary = []
-                    binary.append('00')
+                    if opcode == 'JMP':
+                        binary.append('00')
                     for operand in operands:
                         if operand.isnumeric():
                             binary.append(format(int(operand), '010b'))
+                        elif operand in definitions:
+                            binary.append(definitions[operand])
+                            print(operand, definitions[operand])
                         elif operand in labels:
                             binary.append(format(int(labels[operand]), '010b'))
                     outputFile.write(opcodes[opcode] + ''.join(binary) + '\n')

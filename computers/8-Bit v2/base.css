@@ -99,21 +99,21 @@ table {
 .hide {
     visibility: hidden;
     display: none;
-
+    
+}
+.black {
+    background-color: #000000;
 }
 
 .instructions tr:nth-child(n+5) td:nth-child(12n-5) {
     border-right: 2px solid #000000;
 }
-
 .instructions tr:nth-child(n+5) td:nth-child(12n+4) {
     border-right: 2px solid #666666;
 }
 .instructions tr:nth-child(n+5) td:nth-child(8) {
     border-right: 2px solid #666666;
 }
-
-
 .instructions tr:nth-child(4) td:nth-child(10n+1) {
     border-right: 2px solid #666666;
 }
@@ -150,8 +150,11 @@ table {
     border-bottom: 2px solid #000000;
 }
 
-.black {
-    background-color: #000000;
+.conditions tr:nth-child(1) th:nth-child(1) {
+    border-right: 1px solid #000;
+}
+.conditions tr:nth-child(1) th:nth-child(2) {
+    border-left: 1px solid #000;
 }
 
 td {
@@ -160,7 +163,6 @@ td {
     padding: 2px;
     text-wrap: nowrap;
 }
-
 th {
     border: 2px solid #000000;
     text-align: center;
