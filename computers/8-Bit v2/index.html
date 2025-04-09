@@ -203,7 +203,7 @@
                     <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td colspan="4"class="black"></td><td colspan="4"class="black"></td><td colspan="4"class="black"></td>    <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>NOP</td> <td>No Operation</td> <td> </td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
+                    <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td colspan="4"class="black"></td><td colspan="4"class="black"></td><td colspan="4"class="black"></td>    <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>HLT</td> <td>Halt</td> <td> </td>
                 </tr>
                 <tr>
                     <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>Add</td> <td>Adds A and B</td> <td>C \(\to\) A + B</td>
@@ -224,22 +224,22 @@
                     <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4" class="black"></td> <td colspan="4">Reg C</td>                 <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>RSH</td> <td>Right Shift A by one</td> <td>C \(\to\) A &gt;&gt; 1</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td><td class="hide"></td> <td colspan="8">Immediate</td>                           <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td>LDI</td> <td>Load Immediate</td> <td>A \(\to\) Immediate</td>
+                    <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td class="hide"></td> <td colspan="8">Immediate</td>                          <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td>LDI</td> <td>Load Immediate</td> <td>A \(\to\) Immediate</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td><td class="hide"></td> <td colspan="8">Immediate</td>`                          <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>ADI</td> <td>Add Immediate</td> <td>A \(\to\) A + Immediate</td>
+                    <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td class="hide"></td> <td colspan="8">Immediate</td>`                         <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>ADI</td> <td>Add Immediate</td> <td>A \(\to\) A + Immediate</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>0</td> <td>1</td> <td>0</td> <td class="black"></td><td class="black"></td> <td colspan="10">Address</td>                              <td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>JMP</td> <td>Jump</td> <td>PC \(\to\) Address</td>
+                    <td>1</td> <td>0</td> <td>1</td> <td>0</td> <td colspan="2"class="black"></td> <td class="hide"></td> <td colspan="10">Address</td>                   <td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>JMP</td> <td>Jump</td> <td>PC \(\to\) Address</td>
                 </tr>
                 <tr>
                     <td>1</td> <td>0</td> <td>1</td> <td>1</td> <td colspan="2">Cond</td> <td class="hide"></td> <td colspan="10">Address</td>                            <td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>BRH</td> <td>Branch</td> <td>If cond: PC \(\to\) Address</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
+                    <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td colspan="2"class="black"></td> <td class="hide"></td> <td colspan="10">Address</td>                   <td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>CAL</td> <td>Call Subroutine</td> <td>PC \(\to\) Address</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
+                    <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td colspan="4"class="black"></td><td colspan="4"class="black"></td><td colspan="4"class="black"></td>    <td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>RET</td> <td>Return from Subroutine</td> <td>PC \(\to\) Return Register</td>
                 </tr>
                 <tr>
                     <td>1</td> <td>1</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>

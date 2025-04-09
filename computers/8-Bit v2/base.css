@@ -162,6 +162,7 @@ td {
     text-align: center;
     padding: 2px;
     text-wrap: nowrap;
+    min-width: 20px;
 }
 th {
     border: 2px solid #000000;
