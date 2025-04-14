@@ -1,0 +1,7 @@
+LDI r1 3
+STR r0 r1
+INC r1
+STR r0 r1 1
+STR r0 r1 2
+ADI r1 3
+STR r0 r1 3

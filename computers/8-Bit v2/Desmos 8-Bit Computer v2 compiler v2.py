@@ -1,8 +1,14 @@
+import sys
 file_path = 'test CAL.dasm'
-opcodes = {'NOP': '0000', 'HLT': '0001', 'ADD': '0010','SUB': '0011','XOR': '0100','NOR': '0101','AND': '0110','RSH': '0111', 'LDI': '1000', 'ADI': '1001', 'JMP': '1010', 'BRH': '1011', 'CAL': '1100', 'RET': '1101'}
+if len(sys.argv) > 1:
+    file_path = sys.argv[1]
+opcodes = {'NOP': '0000', 'HLT': '0001', 'ADD': '0010', 'SUB': '0011', 'XOR': '0100', 'NOR': '0101', 'AND': '0110', 'RSH': '0111', 
+           'LDI': '1000', 'ADI': '1001', 'JMP': '1010', 'BRH': '1011', 'CAL': '1100', 'RET': '1101', 'LOD': '1110', 'STR': '1111'}
 psuedocodes = {'INC': opcodes['ADI'], 'DEC': opcodes['ADI'], 'CMP': opcodes['SUB']}
 psuedocodes2 = {'INC': 1, 'DEC': 255, 'CMP': '0000'}
-definitions = {'zero': '00', 'notzero': '01', 'carry': '10', 'notcarry': '11', '=': '00', '!=': '01', '>=': '10', '<': '11', 'z': '00', 'nz': '01', 'c': '10', 'nc': '11'}
+definitions = {'zero': '00', 'notzero': '01', 'carry': '10', 'notcarry': '11', 
+               '=': '00', '!=': '01', '>=': '10', '<': '11', 
+               'z': '00', 'nz': '01', 'c': '10', 'nc': '11'}
 labels = {}
 with open(file_path, 'r') as inputFile:
     i = 0
@@ -80,7 +86,7 @@ with open(file_path, 'r') as inputFile:
                             print(operand, definitions[operand], format(int(definitions[operand]), '04b'))
                         else:
                             binary.append(operand)
-                    binary.append(format(psuedocodes2[opcode], '08b' if isinstance(psuedocodes2[opcode], int) else '04b'))
+                    binary.append(format(int(psuedocodes2[opcode]), '08b' if isinstance(psuedocodes2[opcode], int) else '04b'))
                     #binary.append(format(int(operand[1:]), '04b'))
                     outputFile.write(psuedocodes[opcode] + ''.join(binary) + '\n')
                 elif opcode in ['JMP', 'BRH', 'CAL']:
@@ -96,6 +102,20 @@ with open(file_path, 'r') as inputFile:
                         elif operand in labels:
                             binary.append(format(int(labels[operand]), '010b'))
                             print(operand, labels[operand], format(int(labels[operand]), '010b'))
+                    outputFile.write(opcodes[opcode] + ''.join(binary) + '\n')
+                elif opcode in ['LOD', 'STR']:
+                    binary = []
+                    for operand in operands:
+                        if operand.startswith('r') and operand[1].isnumeric():
+                            binary.append(format(int(operand[1:]), '04b'))
+                        elif operand in definitions:
+                            binary.append(format(int(definitions[operand]), '04b'))
+                            print(operand, definitions[operand], format(int(definitions[operand]), '04b'))
+                        else:
+                            binary.append(format(int(operand), '04b'))
+                    if len(binary) < 3:
+                        binary.append('0000')
+                    #binary.append(format(int(operand[1:]), '04b'))
                     outputFile.write(opcodes[opcode] + ''.join(binary) + '\n')
                 elif opcode in ['NOP', 'HLT', 'RET']:
                     outputFile.write(opcodes[opcode] + format(0, '012b') + '\n')
