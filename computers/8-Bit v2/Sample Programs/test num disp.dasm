@@ -1,0 +1,9 @@
+LDI r15 250
+LOD r15 r1 4
+STR r15 r1 0
+NOP
+NOP
+NOP
+STR r15 r1 1
+NOP
+JMP 1

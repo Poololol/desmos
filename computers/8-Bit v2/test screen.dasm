@@ -1,0 +1,21 @@
+LDI r15 240
+LDI r1 0
+LDI r2 0
+LDI r3 10
+STR r15 r1 0
+STR r15 r2 1
+STR r15 r0 2
+.loop
+STR r15 r0 3
+INC r1
+INC r2
+STR r15 r1 0
+STR r15 r2 1
+STR r15 r0 2
+STR r15 r0 5
+DEC r3
+BRH != .loop
+STR r15 r0 6
+STR r15 r0 5
+
+HLT

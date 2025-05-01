@@ -10,4 +10,6 @@ STR r2 r1 0
 STR r2 r1 1
 STR r2 r1 2
 STR r2 r1 3
+LDI r15 15
+STR r15 r1 -5
 HLT

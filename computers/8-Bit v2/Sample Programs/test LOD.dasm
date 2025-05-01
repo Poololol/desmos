@@ -1,5 +1,5 @@
 LDI r1 3
-STR r0 r1
+STR r0 r1 0
 INC r1
 STR r0 r1 1
 STR r0 r1 2
@@ -10,4 +10,16 @@ STR r2 r1 0
 STR r2 r1 1
 STR r2 r1 2
 STR r2 r1 3
+
+NOP
+NOP
+
+LOD r0 r3 0
+LOD r0 r4 1
+LOD r0 r5 2
+LOD r0 r6 3
+LOD r2 r7 0
+LOD r2 r8 1
+LOD r2 r9 2
+LOD r2 r10 3
 HLT

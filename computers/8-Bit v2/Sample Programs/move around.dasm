@@ -1,0 +1,77 @@
+#define basePointer 248
+#define pixelX -8
+#define pixelY -7
+#define draw -6
+#define erase -5
+#define pushScreen -3
+#define clearBuffer -2
+#define inputs 7
+
+LDI r15 basePointer
+; X Coord
+LDI r1 16
+; Y Coord
+LDI r2 16
+; Direction
+LDI r3 0
+; Comparison
+LDI r4 0
+; Current Inputs
+LDI r5 0
+; Masks
+LDI r6 0b00001111
+LDI r7 0b00100000
+; End Condition
+LDI r8 0
+; New Inputs
+LDI r9 0
+
+.loop
+LDI r4 0b00000001
+CMP r3 r4
+BRH = .left
+LDI r4 0b00000010
+CMP r3 r4
+BRH = .up
+LDI r4 0b00000100
+CMP r3 r4
+BRH = .right
+LDI r4 0b00001000
+CMP r3 r4
+BRH = .down
+
+.drawPixel
+STR r15 r0 clearBuffer
+STR r15 r1 pixelX
+STR r15 r2 pixelY
+STR r15 r0 draw
+STR r15 r0 pushScreen
+; Inputs
+LOD r15 r9 inputs
+CMP r5 r9
+BRH = .skip
+ADD r9 r0 r5
+.skip
+AND r5 r6 r3
+AND r5 r7 r8
+CMP r8 r0
+BRH != .end
+JMP .loop
+
+.left
+DEC r1
+JMP .drawPixel
+.up
+INC r2
+JMP .drawPixel
+.right
+INC r1
+JMP .drawPixel
+.down
+DEC r2
+JMP .drawPixel
+
+.end
+STR r15 r0 clearBuffer
+STR r15 r0 pushScreen
+HLT

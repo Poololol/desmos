@@ -1,0 +1,16 @@
+LDI r15 247
+STR r15 r0 2
+STR r15 r0 1
+LDI r1 "h"
+STR r15 r1 0
+LDI r1 "e"
+STR r15 r1 0
+LDI r1 "l"
+STR r15 r1 0
+STR r15 r1 0
+LDI r1 "e"
+STR r15 r1 0
+LDI r1 "!"
+STR r15 r1 0
+STR r15 r0 1
+HLT
