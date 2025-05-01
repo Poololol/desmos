@@ -1,0 +1,34 @@
+{
+    "name": "desmosassembly",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": ">=0.9.0-pre.1"
+    },
+    "publisher": "poololol",
+    "contributes": {
+        "languages": [
+            {
+                "id": "desmosassembly",
+                "extensions": [
+                    ".dasm"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "desmosassembly",
+                "scopeName": "source.desmosassembly",
+                "path": "./syntaxes/desmosassembly.tmGrammar.json"
+            }
+        ],
+        "themes": [
+            {
+                "id": "DASM Abyss",
+                "label": "Abyss - Modified",
+                "uiTheme": "vs-dark",
+                "path": "./themes/dasmAbyss-color-theme.json"
+            }
+        ]
+    }
+}

@@ -1,0 +1,9 @@
+STR r14 r1 1
+LDI r3 "h"
+#define test 12
+LDI r2 0b1101
+; JUMP HERE
+.label
+JMP .label
+BRH != .label
+LDI r1 test
