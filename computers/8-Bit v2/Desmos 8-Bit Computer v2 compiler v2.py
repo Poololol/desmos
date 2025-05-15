@@ -36,10 +36,18 @@ with open(file_path, 'r') as inputFile:
                 continue
             else:
                 opcode = line[:3]
-                operands = line[4:].replace('\n','').split(' ')
+                operands = []
+                for op in line[4:].replace('\n','').split(' '):
+                    if len(op) == 0:
+                        continue
+                    if op[0] == ';':
+                        break
+                    operands.append(op)
                 if opcode in ['ADD', 'SUB', 'XOR', 'NOR', 'AND']:
                     binary = []
                     for operand in operands:
+                        if operand.startswith(';'):
+                            break
                         if operand.startswith('r') and operand[1].isnumeric():
                             binary.append(format(int(operand[1:]), '04b'))
                         elif operand in definitions:
@@ -53,6 +61,8 @@ with open(file_path, 'r') as inputFile:
                 elif opcode in ['RSH']:
                     binary = []
                     for i, operand in enumerate(operands):
+                        if operand.startswith(';'):
+                            break
                         if i == 1:
                             binary.append('0000')
                         if operand.startswith('r') and operand[1].isnumeric():
@@ -65,6 +75,8 @@ with open(file_path, 'r') as inputFile:
                 elif opcode in ['LDI', 'ADI']:
                     binary = []
                     for operand in operands:
+                        if operand.startswith(';'):
+                            break
                         if operand.startswith('r') and operand[1].isnumeric():
                             binary.append(format(int(operand[1:]), '04b'))
                         elif operand in definitions:
@@ -91,6 +103,8 @@ with open(file_path, 'r') as inputFile:
                 elif opcode in ['INC', 'DEC', 'CMP']:
                     binary = []
                     for operand in operands:
+                        if operand.startswith(';'):
+                            break
                         if operand.startswith('r') and operand[1].isnumeric():
                             binary.append(format(int(operand[1:]), '04b'))
                         elif operand in definitions:
@@ -106,6 +120,8 @@ with open(file_path, 'r') as inputFile:
                     if opcode in ['JMP', 'CAL']:
                         binary.append('00')
                     for operand in operands:
+                        if operand.startswith(';'):
+                            break
                         if operand.isnumeric():
                             binary.append(format(int(operand), '010b'))
                         elif operand in definitions:
@@ -118,6 +134,8 @@ with open(file_path, 'r') as inputFile:
                 elif opcode in ['LOD', 'STR']:
                     binary = []
                     for operand in operands:
+                        if operand.startswith(';'):
+                            break
                         if operand.startswith('r') and operand[1].isnumeric():
                             binary.append(format(int(operand[1:]), '04b'))
                         elif operand in definitions:
