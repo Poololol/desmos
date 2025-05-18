@@ -102,42 +102,65 @@ table {
     
 }
 .black {
-    background-color: #000000;
+    background-color: #666;
+    border: none;
+}
+.gray {
+    background-color: #999;
+    border: none;
 }
 
-.instructions tr:nth-child(n+5) td:nth-child(12n-5) {
+.instructions tr:nth-child(n+5) td:nth-child(17n-10) {
     border-right: 2px solid #000000;
 }
-.instructions tr:nth-child(n+5) td:nth-child(12n+4) {
-    border-right: 2px solid #666666;
+.instructions tr:nth-child(n+5) td:nth-child(15n+4) {
+    border-right: double #000000;
 }
-.instructions tr:nth-child(n+5) td:nth-child(8) {
-    border-right: 2px solid #666666;
+.instructions tr:nth-child(n+5) td:nth-child(9) {
+    border-right: double #000000;
 }
-.instructions tr:nth-child(4) td:nth-child(10n+1) {
-    border-right: 2px solid #666666;
+.instructions tr:nth-child(n+5) td:nth-child(10) {
+    border-right: double #000000;
+}
+.instructions tr:nth-child(4) td:nth-child(12n+1) {
+    border-right: double #000000;
 }
 .instructions tr:nth-child(2) td:nth-child(n+2) {
     border-right: 2px solid #000000;
 } 
-.instructions tr:nth-child(4) td:nth-child(12n+2) {
+.instructions tr:nth-child(4) td:nth-child(14n+2) {
     border-right: 2px solid #000000;
 } 
 .instructions tr:nth-child(3) td:nth-child(n+17) {
-    border-right: 2px solid #666;
+    border-right: double #000000;
 } 
-.instructions tr:nth-child(3) td:nth-child(3n+16) {
+.instructions tr:nth-child(3) td:nth-child(4n+16) {
     border-right: 2px solid #000000;
 } 
 .instructions tr:nth-child(4) {
     border-bottom: 2px solid #000000;
 }
-.instructions tr:nth-child(3) td:nth-last-child(n+4) {
-    border-bottom: 2px solid #666666;
+.instructions tr:nth-child(3) td:nth-last-child(n+5) {
+    border-bottom: double #000000;
 }
-.instructions tr:nth-child(4) td:nth-child(3) {
-    border-right: 2px solid #666;
+.instructions tr:nth-child(4) td:nth-child(4) {
+    border-right: double #000000;
 } 
+.instructions tr:nth-child(4) td:nth-child(5) {
+    border-right: double #000000;
+} 
+.instructions tr:nth-child(n+5) td:nth-child(16) {
+    border-right: 2px dotted #000000;
+}
+.instructions tr:nth-child(n+5) td:nth-child(18) {
+    border-right: 2px dotted #000000;
+}
+.instructions tr:nth-child(n+5) td:nth-child(20) {
+    border-right: 2px dotted #000000;
+}
+.instructions tr:nth-child(n+5) td:nth-child(22) {
+    border-right: 2px dotted #000000;
+}
 
 .alu tr:nth-child(3) td:nth-child(n) {
     border-bottom: 2px solid #000000;
@@ -157,12 +180,21 @@ table {
     border-left: 1px solid #000;
 }
 
+
+.IO tr.edge {
+    border-bottom: double;
+}
+
 td {
     border: 1px solid #000000;
     text-align: center;
     padding: 2px;
     text-wrap: nowrap;
-    min-width: 20px;
+    min-width: 1rem;
+}
+.mux td {
+    padding-left: 5px;
+    padding-right: 5px;
 }
 th {
     border: 2px solid #000000;

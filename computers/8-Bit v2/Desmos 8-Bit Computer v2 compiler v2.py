@@ -5,7 +5,7 @@ if len(sys.argv) > 1:
     file_path = sys.argv[1]
 opcodes = {'NOP': '0000', 'HLT': '0001', 'ADD': '0010', 'SUB': '0011', 'NOR': '0100', 'AND': '0101', 'XOR': '0110', 'RSH': '0111', 
            'LDI': '1000', 'ADI': '1001', 'JMP': '1010', 'BRH': '1011', 'CAL': '1100', 'RET': '1101', 'LOD': '1110', 'STR': '1111'}
-print(opcodes.keys())
+print(opcodes.keys(), len(opcodes))
 psuedocodes = {'INC': opcodes['ADI'], 'DEC': opcodes['ADI'], 'CMP': opcodes['SUB']}
 psuedocodes2 = {'INC': 1, 'DEC': 255, 'CMP': '0000'}
 definitions = {'zero': '00', 'notzero': '01', 'carry': '10', 'notcarry': '11', 

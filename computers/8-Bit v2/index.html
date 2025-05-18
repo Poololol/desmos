@@ -78,6 +78,7 @@
             <p>
                 The ALU follows mattbatwings' design almost exactly.
                 With 2 8-Bit Inputs, an 8-Bit Output, and a 5-Bit Control Input.
+            </p>
                 <table style="width: 30%;" class="alu">
                   <tr>
                     <th colspan="7">ALU</th>
@@ -166,9 +167,30 @@
                     <td>0</td>
                     <td>1</td>
                     <td>11001</td>
-                  </tr>
-                </table>
-            </p>
+                </tr>
+            </table>
+            
+            <table style="margin-top: 1rem;" class="mux">
+                <tr>
+                    <th colspan="2">ALU Mux</th>
+                </tr>
+                <tr>
+                    <td>Input</td>
+                    <td>Meaning</td>
+                </tr>
+                <tr>
+                    <td>00</td> <td>Register B</td>
+                </tr>
+                <tr>
+                    <td>01</td> <td>Immediate</td>
+                </tr>
+                <tr>
+                    <td>10</td> <td>Offset</td>
+                </tr>
+                <tr>
+                    <td>11</td> <td></td>
+                </tr>
+            </table>
             <h3>2.2 Registers</h3>
             <p>
                 The registers don't follow mattbatwings' design because the way he implemented them was specific to Minecraft. 
@@ -181,6 +203,29 @@
                 $$r_{eadRegister}\left(a_{ddress}\right)=\left\{a_{ddress}=0:0,r_{egisters}\left[b_{inToDec}\left(a_{ddress}\right)\right]\right\}$$
                 $$w_{riteRegister}\left(a_{ddress},d_{ata}\right)=\left\{c_{ontrol}\left[1\right]=1:r_{egisters}\to\left(\left\{i=b_{inToDec}\left(a_{ddress}\right):d_{ata},r_{egisters}\left[i\right]\right\}\operatorname{for}i=\left[1 ...r_{egisters}.\operatorname{length}\right]\right)\right\}$$
             </div>
+            <table class="mux">
+                <tr>
+                    <th colspan="2">Data Mux</th> <th colspan="2">Dest Mux</th>
+                </tr>
+                <tr>
+                    <td>Input</td>
+                    <td>Meaning</td>
+                    <td>Input</td>
+                    <td>Meaning</td>
+                </tr>
+                <tr>
+                    <td>00</td> <td>ALU Output</td> <td>00</td> <td>Register C</td>
+                </tr>
+                <tr>
+                    <td>01</td> <td>Immediate</td> <td>01</td> <td>Register A</td>
+                </tr>
+                <tr>
+                    <td>10</td> <td>Memory</td> <td>10</td> <td>Register B</td>
+                </tr>
+                <tr>
+                    <td>11</td> <td></td> <td>11</td> <td></td>
+                </tr>
+            </table>
 
             <h3>2.3 Instruction Set</h3>
             <p>
@@ -188,64 +233,64 @@
             </p>
             <table style="width: 80%;" class="instructions">
                 <tr>
-                    <th colspan="31">Instruction Set</th>
+                    <th colspan="36">Instruction Set</th>
                 </tr>
                 <tr>
-                    <td colspan="8">Byte 1</td> <td colspan="8">Byte 2</td> <td colspan="12">CROM</td> <td colspan="3" rowspan="2" style="background-color: #000000;"></td>
+                    <td colspan="8">Byte 1</td> <td colspan="8">Byte 2</td> <td colspan="17">CROM</td> <td colspan="3" rowspan="2" class="black"></td>
                 </tr>
                 <tr>
-                    <td>7</td> <td>6</td> <td>5</td> <td>4</td> <td>3</td> <td>2</td> <td>1</td> <td>0</td> <td>7</td> <td>6</td> <td>5</td> <td>4</td> <td>3</td> <td>2</td> <td>1</td> <td>0</td> <td colspan="1">PC</td> <td colspan="8">ALU</td> <td colspan="3">Registers</td>
+                    <td>7</td> <td>6</td> <td>5</td> <td>4</td> <td>3</td> <td>2</td> <td>1</td> <td>0</td> <td>7</td> <td>6</td> <td>5</td> <td>4</td> <td>3</td> <td>2</td> <td>1</td> <td>0</td> <td colspan="2">RAM</td> <td colspan="1">PC</td> <td colspan="9">ALU</td> <td colspan="5">Registers</td>
                 </tr>
                 <tr>
-                    <td colspan="4">Opcode</td> <td colspan="12">Operands</td>                                                                                           <td>JMP</td><td>!A</td><td>!B</td><td>CI</td><td>FC</td><td>OR</td><td>RS</td><td>ALU Mux</td><td>Flags</td><td>EN</td><td>Data Mux</td><td>Dest Mux</td><td>Mnumonic</td><td>Description</td><td>Psuedocode</td>
+                    <td colspan="4">Opcode</td> <td colspan="12">Operands</td>                                                                                           <td>R/W</td><td>EN</td><td>JMP</td><td>!A</td><td>!B</td><td>CI</td><td>FC</td><td>OR</td><td>RS</td><td colspan="2">ALU Mux</td><td>Flags</td><td>EN</td><td colspan="2">Data Mux</td><td colspan="2">Dest Mux</td><td>Mnemonic</td><td>Description</td><td>Psuedocode</td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td colspan="4"class="black"></td><td colspan="4"class="black"></td><td colspan="4"class="black"></td>    <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>NOP</td> <td>No Operation</td> <td> </td>
+                    <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td colspan="4"class="black"></td><td colspan="4"class="black"></td><td colspan="4"class="black"></td>    <td>0</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td><td>X</td> <td>X</td> <td>NOP</td> <td>No Operation</td> <td> </td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td colspan="4"class="black"></td><td colspan="4"class="black"></td><td colspan="4"class="black"></td>    <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>HLT</td> <td>Halt</td> <td> </td>
+                    <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td colspan="4"class="black"></td><td colspan="4"class="black"></td><td colspan="4"class="black"></td>    <td>0</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td><td>X</td> <td>X</td> <td>HLT</td> <td>Halt</td> <td>Stops the Program Counter</td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>Add</td> <td>Adds A and B</td> <td>C \(\to\) A + B</td>
+                    <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td><td>0</td> <td>0</td> <td>Add</td> <td>Adds A and B</td> <td>C \(\to\) A + B</td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>Sub</td> <td>Subtracts B from A</td> <td>C \(\to\) A - B</td>
+                    <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td><td>0</td> <td>0</td> <td>Sub</td> <td>Subtracts B from A</td> <td>C \(\to\) A - B</td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>NOR</td> <td>A NOR B</td> <td>C \(\to\) !(A | B)</td>
+                    <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td><td>0</td> <td>0</td> <td>NOR</td> <td>A NOR B</td> <td>C \(\to\) !(A | B)</td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>1</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>AND</td> <td>A AND B</td> <td>C \(\to\) A &amp; B</td>
+                    <td>0</td> <td>1</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td><td>0</td> <td>0</td> <td>AND</td> <td>A AND B</td> <td>C \(\to\) A &amp; B</td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>XOR</td> <td>A XOR B</td> <td>C \(\to\) !(A ^ B)</td>
+                    <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td><td>0</td> <td>0</td> <td>XOR</td> <td>A XOR B</td> <td>C \(\to\) (A ^ B)</td>
                 </tr>
                 <tr>
-                    <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4" class="black"></td> <td colspan="4">Reg C</td>                 <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>RSH</td> <td>Right Shift A by one</td> <td>C \(\to\) A &gt;&gt; 1</td>
+                    <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4" class="black"></td> <td colspan="4">Reg C</td>                 <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td><td>0</td> <td>0</td> <td>RSH</td> <td>Right Shift A by one</td> <td>C \(\to\) A &gt;&gt; 1</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td class="hide"></td> <td colspan="8">Immediate</td>                          <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td>LDI</td> <td>Load Immediate</td> <td>A \(\to\) Immediate</td>
+                    <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td colspan="4">Reg A</td> <td class="hide"></td> <td colspan="8">Immediate</td>                          <td>0</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>1</td> <td>0</td> <td>1</td><td>0</td> <td>1</td> <td>LDI</td> <td>Load Immediate</td> <td>A \(\to\) Immediate</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td class="hide"></td> <td colspan="8">Immediate</td>`                         <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td>ADI</td> <td>Add Immediate</td> <td>A \(\to\) A + Immediate</td>
+                    <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td colspan="4">Reg A</td> <td class="hide"></td> <td colspan="8">Immediate</td>`                         <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>1</td> <td>0</td> <td>0</td><td>0</td> <td>1</td> <td>ADI</td> <td>Add Immediate</td> <td>A \(\to\) A + Immediate</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>0</td> <td>1</td> <td>0</td> <td colspan="2"class="black"></td> <td class="hide"></td> <td colspan="10">Address</td>                   <td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>JMP</td> <td>Jump</td> <td>PC \(\to\) Address</td>
+                    <td>1</td> <td>0</td> <td>1</td> <td>0</td> <td colspan="2"class="black"></td> <td class="hide"></td> <td colspan="10">Address</td>                   <td>0</td> <td>0</td> <td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>JMP</td> <td>Jump</td> <td>PC \(\to\) Address</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>0</td> <td>1</td> <td>1</td> <td colspan="2">Cond</td> <td class="hide"></td> <td colspan="10">Address</td>                            <td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>BRH</td> <td>Branch</td> <td>If cond: PC \(\to\) Address</td>
+                    <td>1</td> <td>0</td> <td>1</td> <td>1</td> <td colspan="2">Cond</td> <td class="hide"></td> <td colspan="10">Address</td>                            <td>0</td> <td>0</td> <td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>BRH</td> <td>Branch</td> <td>If cond: PC \(\to\) Address</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td colspan="2"class="black"></td> <td class="hide"></td> <td colspan="10">Address</td>                   <td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>CAL</td> <td>Call Subroutine</td> <td>PC \(\to\) Address</td>
+                    <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td colspan="2"class="black"></td> <td class="hide"></td> <td colspan="10">Address</td>                   <td>0</td> <td>0</td> <td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>CAL</td> <td>Call Subroutine</td> <td>PC \(\to\) Address, Push PC+1 to Stack</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td colspan="4"class="black"></td><td colspan="4"class="black"></td><td colspan="4"class="black"></td>    <td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>RET</td> <td>Return from Subroutine</td> <td>PC \(\to\) Return Register</td>
+                    <td>1</td> <td>1</td> <td>0</td> <td>1</td> <td colspan="4"class="black"></td><td colspan="4"class="black"></td><td colspan="4"class="black"></td>    <td>0</td> <td>0</td> <td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>0</td> <td>0</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>RET</td> <td>Return from Subroutine</td> <td>PC \(\to\) Return Register, Pop Stack</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>1</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
+                    <td>1</td> <td>1</td> <td>1</td> <td>0</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Offset</td>                         <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>1</td> <td>1</td> <td>0</td><td>1</td> <td>0</td> <td>LOD</td> <td>Load from Memory</td> <td>B \(\to\) Mem[A + offset]</td>
                 </tr>
                 <tr>
-                    <td>1</td> <td>1</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Reg C</td>                          <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
+                    <td>1</td> <td>1</td> <td>1</td> <td>1</td> <td colspan="4">Reg A</td> <td colspan="4">Reg B</td> <td colspan="4">Offset</td>                         <td>1</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td><td>1</td> <td>0</td> <td>STR</td> <td>Store to Memory</td> <td>Mem[A + offset] \(\to\) B</td>
                 </tr>
             </table>
 
@@ -305,6 +350,143 @@
                     <td>Carry Flag False</td>
                 </tr>
             </table>
+
+            <h3>2.7 I/O</h3>
+            <table class="IO">
+                <tr>
+                  <th>Device</th>
+                  <th>Address</th>
+                  <th>Function</th>
+                  <th>Name</th>
+                  <th>Holds</th>
+                  <th>On Write</th>
+                  <th>On Read</th>
+                </tr>
+                <tr>
+                  <td rowspan="7">Screen</td>
+                  <td>240</td>
+                  <td rowspan="4">Store Only</td>
+                  <td>Pixel X</td>
+                  <td>Bottom 5 Bits are X coord</td>
+                  <td class="gray"> </td>
+                  <td class="black"> </td>
+                </tr>
+                <tr>
+                  <td>241</td>
+                  <td>Pixel Y</td>
+                  <td>Bottom 5 Bits are Y coord</td>
+                  <td class="gray"> </td>
+                  <td class="black"> </td>
+                </tr>
+                <tr>
+                  <td>242</td>
+                  <td>Draw Pixel</td>
+                  <td class="gray"> </td>
+                  <td>Draw Pixel at (X, Y) to Buffer</td>
+                  <td class="black"> </td>
+                </tr>
+                <tr>
+                  <td>243</td>
+                  <td>Clear Pixel</td>
+                  <td class="gray"> </td>
+                  <td>Clear Pixel at (X, Y) to Buffer</td>
+                  <td class="black"> </td>
+                </tr>
+                <tr>
+                  <td>244</td>
+                  <td>Load Only</td>
+                  <td>Load Pixel</td>
+                  <td>Pixel Data</td>
+                  <td class="black"> </td>
+                  <td>Load Pixel at (X, Y) to Memory</td>
+                </tr>
+                <tr>
+                  <td>245</td>
+                  <td rowspan="2">Store Only</td>
+                  <td>Push Buffer</td>
+                  <td class="gray"> </td>
+                  <td>Push Screen Buffer</td>
+                  <td class="black"> </td>
+                </tr>
+                <tr class="edge">
+                  <td>246</td>
+                  <td>Clear Buffer</td>
+                  <td class="gray"> </td>
+                  <td>Clear Screen Buffer</td>
+                  <td class="black"> </td>
+                </tr>
+                <tr>
+                  <td rowspan="3">Char Disp</td>
+                  <td>247</td>
+                  <td rowspan="3">Store Only</td>
+                  <td>Write Char</td>
+                  <td>Character</td>
+                  <td>Write Character to Buffer</td>
+                  <td class="black"> </td>
+                </tr>
+                <tr>
+                  <td>248</td>
+                  <td>Push Buffer</td>
+                  <td class="gray"> </td>
+                  <td>Push Character Buffer</td>
+                  <td class="black"> </td>
+                </tr>
+                <tr class="edge">
+                  <td>249</td>
+                  <td>Clear Buffer</td>
+                  <td class="gray"> </td>
+                  <td>Clear Character Buffer</td>
+                  <td class="black"> </td>
+                </tr>
+                <tr>
+                  <td rowspan="4">Num Disp</td>
+                  <td>250</td>
+                  <td rowspan="4">Store Only</td>
+                  <td>Show Number</td>
+                  <td>Number</td>
+                  <td>Show Number</td>
+                  <td class="black"> </td>
+                </tr>
+                <tr>
+                  <td>251</td>
+                  <td>Clear Number</td>
+                  <td class="gray"> </td>
+                  <td>Clear Number Display</td>
+                  <td class="black"> </td>
+                </tr>
+                <tr>
+                  <td>252</td>
+                  <td>Signed Mode</td>
+                  <td class="gray"> </td>
+                  <td>Interperet Number as 2s Comp [-128, 127]</td>
+                  <td class="black"> </td>
+                </tr>
+                <tr class="edge">
+                  <td>253</td>
+                  <td>Unsigned Mode</td>
+                  <td class="gray"> </td>
+                  <td>Interperet Number as Unsigned [0, 255]</td>
+                  <td class="black"> </td>
+                </tr>
+                <tr class="edge">
+                  <td>RNG</td>
+                  <td>254</td>
+                  <td>Load Only</td>
+                  <td>RNG</td>
+                  <td>Random 8-Bit Number</td>
+                  <td class="black"> </td>
+                  <td>Load Random Number and Generate a new one</td>
+                </tr>
+                <tr>
+                  <td>Controller</td>
+                  <td>255</td>
+                  <td>Load Only</td>
+                  <td>Controller Input</td>
+                  <td>Controller Info</td>
+                  <td class="black"> </td>
+                  <td>Load Controller Info and Clear Inputs</td>
+                </tr>
+              </table>
         </div>
     </div>
     <div style="margin-bottom: 5rem;">
