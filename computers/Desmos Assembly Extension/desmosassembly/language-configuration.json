@@ -4,5 +4,8 @@
     ],
     "surroundingPairs": [
         ["\"","\""]
-    ]
+    ],
+    "comments": {
+        "lineComment": ";"
+    }
 }
