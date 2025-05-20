@@ -6,7 +6,7 @@
       "patterns": [{ "include": "#opcode" }, { "include": "#register" }, { "include": "#number" }, { "include": "#def" }, { "include": "#string" }, { "include": "#label" }, { "include": "#comment" }, { "include": "#operator" }, { "include": "#paren-expression" }]
     },
     "opcode": {
-      "match": "(NOP)|(HLT)|(ADD)|(SUB)|(XOR)|(NOR)|(AND)|(RSH)|(LDI)|(ADI)|(JMP)|(BRH)|(CAL)|(RET)|(LOD)|(STR)|(INC)|(DEC)|(CMP)",
+      "match": "(NOP)|(HLT)|(ADD)|(SUB)|(XOR)|(NOR)|(AND)|(RSH)|(LDI)|(ADI)|(JMP)|(BRH)|(CAL)|(RET)|(LOD)|(STR)|(INC)|(DEC)|(CMP)|(\b[A-Z]{3} )",
       "name": "entity.name.function"
     },
     "register": {
