@@ -1,0 +1,19 @@
+// Useful ports
+LDI r12 pixel_x 
+LDI r13 pixel_y 
+LDI r14 draw_pixel 
+LDI r15 buffer_screen 
+
+LDI r2 32 
+.outer_loop
+LDI r1 32 
+STR r13 r2                 // update Pixel Y 
+.inner_loop 
+STR r12 r1                 // update Pixel X 
+STR r14 r0                 // draw pixel 
+STR r15 r0                 // push buffer to screen 
+DEC r1 
+BRH ge .inner_loop 
+DEC r2 
+BRH ge .outer_loop 
+HLT
